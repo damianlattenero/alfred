@@ -28,10 +28,10 @@ Given /^a teacher assigned himself as on-charge of correction$/ do
 end
 
 And /^I click "Asignarme a mi" on the last submission$/ do
-  find( :xpath, "//button[last()]").click
+  find(:css, "button.assign-to-me").click
 end
 
-And /^I click "(.*)" on last correction$/ do |action_name| 
+And /^I click "(.*)" on last correction$/ do |action_name|
   as_teacher_for_assignment( 'TP1', action_name ).click
 end
 
@@ -55,9 +55,9 @@ And /^Mail has been sent to student$/ do
   expect( mail.to ).to include( @student.email )
   expect( mail.from ).to include( @teacher.email )
   expect( mail.body ).to include(
-    "* Trabajo Practico: TP1", 
+    "* Trabajo Practico: TP1",
     "* Corrector: #{@teacher.name}, #{@teacher.email}",
     "* Calificacion: #{Correction.last.grade}",
-    "* Comentarios: #{Correction.last.public_comments}" 
+    "* Comentarios: #{Correction.last.public_comments}"
   )
 end

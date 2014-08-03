@@ -74,7 +74,7 @@ end
 
 Given /^I am logged in as student$/ do
   @account = @student
-  visit '/login'
+  visit '/accounts/login'
   fill_in(:email, :with => @student.email)
   fill_in(:password, :with => 'Passw0rd!')
   click_button :sign_in
@@ -82,14 +82,14 @@ end
 
 Given /^I am logged in as teacher$/ do
   @account = @teacher
-  visit '/login'
+  visit '/accounts/login'
   fill_in(:email, :with => @teacher.email)
   fill_in(:password, :with => 'Passw0rd!')
   click_button :sign_in
 end
 
 Given /^I logged out$/ do
-  visit '/logout'
+  visit '/accounts/logout'
   @account = nil
 end
 
